@@ -1,0 +1,206 @@
+/* Shared additions to chapter 02: physical-component controls, observation
+   controls and responsive map/settings layout apply to all circuit maps. */
+.circuit-map-view .parameters label{grid-template-columns:minmax(0,1fr) auto;gap:5px 12px}
+.circuit-map-view .parameters output{font-variant-numeric:tabular-nums;color:#d0ded4}
+.circuit-map-view input[type=range]{width:100%;accent-color:#8dc7ab;min-height:24px;grid-column:1/-1}
+.component-label-box{fill:#1b2a2e;stroke:#647c70;stroke-width:1.2}
+.component-label-leader{fill:none;stroke:#a5bdad;stroke-width:1.4;stroke-dasharray:4 3;pointer-events:none}
+.circuit-diagram .component-label-name{font-size:20px;font-weight:600;fill:#e1ebe3}
+.circuit-diagram .component-label-detail{font-size:17px;fill:#aec6b6}
+.map-workspace[data-mode=guided] .manual-circuit .part.has-component-label:not(.lesson-focus):not(.selected){opacity:.85}
+.has-component-label:hover .symbol-body,.has-component-label:focus-visible .symbol-body{stroke:#c4e0b6!important;stroke-width:3.5}
+.has-component-label:hover .component-label-box,.has-component-label:focus-visible .component-label-box,.has-component-label.selected .component-label-box{fill:#2a4036;stroke:#bad8ab;stroke-width:1.8}
+.has-component-label:hover .component-label-leader,.has-component-label.selected .component-label-leader{stroke:#c4e0b6;stroke-width:2}
+.circuit-diagram .terminal-name{font-size:17px;font-weight:650;fill:#cfe5c9}
+.terminal-readings{margin:10px 20px 24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;color:#3b5f44;font-size:14px}
+.terminal-readings>div{display:flex;flex-direction:column;gap:6px;padding:10px;border:1px solid #ccd9c2;border-radius:5px;font-variant-numeric:tabular-nums}
+.terminal-readings>p{grid-column:1/-1;margin:3px 0;font-size:14px;line-height:1.8}
+.observation-controls{display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px;padding-top:8px;font-size:13px;flex-shrink:0}
+.observation-controls label{display:flex;align-items:center;gap:7px;white-space:nowrap;color:#b7c9bd}
+.observation-controls select,.observation-controls input,.wave-channels select{font-size:13px;background:#1b2b30;color:#dce8dd;border:1px solid #57705f;border-radius:4px;min-height:34px;padding:3px 7px}
+.observation-controls input{width:92px;font-variant-numeric:tabular-nums}
+.observation-controls button{font-size:13px;min-height:34px;padding:4px 9px;background:#283e35;color:#dce8dd;border:1px solid #57705f;border-radius:4px}
+.observation-controls button:disabled{opacity:.45;cursor:default}
+.wave-channels{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:10px;flex-shrink:0}
+.wave-channels label{display:flex;flex-direction:column;gap:4px;padding-left:8px;font-size:12px;color:#aabfaf;min-width:0}
+.wave-channels select{width:100%;min-width:0;text-overflow:ellipsis}
+.comparison-note{color:#c1c9ba;font-size:13px;line-height:1.6;margin:8px 0 0;flex-shrink:0}
+.circuit-map-view .measurements>.waveform{min-height:128px;flex:1 0 128px}
+.observation-options{font-size:13px;margin:7px 0;color:#c3d2c6;flex-shrink:0}
+.observation-options summary{cursor:pointer;line-height:1.8;width:fit-content}
+.observation-options>button{font-size:13px;min-height:34px;padding:4px 9px;margin:9px 9px 0 0;background:#283e35;color:#dce8dd;border:1px solid #57705f;border-radius:4px}
+.observation-options>button:disabled{opacity:.45}
+.measurement-marks{display:none;pointer-events:none}
+.part.show-measurement .measurement-marks{display:block}
+.circuit-diagram .measurement-sign{fill:#f0d998;font-weight:650;font-size:18px}
+.manual-current-arrow{fill:none;stroke:#ffe55e;stroke-width:1.8;pointer-events:none}
+.map-workspace:not(.circuit-map-view) .measurements>.waveform{min-height:128px;flex:1 0 128px}
+.map-view-actions{display:flex;gap:6px;flex-shrink:0}
+.map-view-actions button{font-size:12px;min-height:32px;padding:3px 9px;border:1px solid #506856;border-radius:4px;background:transparent;color:#c6d8c6;white-space:nowrap}
+.prepare-experiment{padding:9px 15px;border:1px solid #6c8e6b;border-radius:5px;background:#e1ebd7;color:#365e3e;font:inherit;font-size:16px;cursor:pointer}
+.wave-extra,.wave-reference{fill:none;stroke-width:1.7;stroke-linejoin:round}
+.wave-reference{stroke-dasharray:5 4;opacity:.75}
+.observation-legend{color:#a6bdb0;font-size:12px}
+.circuit-map-view .capacitor-values{font-size:12px}
+.circuit-map-view .setting-controls{display:flex;flex-wrap:wrap;gap:12px}
+@media(max-width:1000px){.wave-channels{grid-template-columns:repeat(2,minmax(0,1fr))}.terminal-readings{grid-template-columns:1fr}.map-key{bottom:8px;left:8px;font-size:12px}}
+.source-current-reference{fill:none;stroke:#ffe55e;stroke-width:2;stroke-dasharray:5 3;pointer-events:none}
+
+/* One shared layout: the settings column never covers the observations. */
+.map-workspace{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:auto minmax(0,1fr);container:none}
+.map-workspace>.core-toolbar{position:relative;inset:auto;grid-column:1/-1;grid-row:1;height:auto;min-height:46px;flex-wrap:wrap;padding-block:6px;row-gap:6px}
+.map-content{position:relative;grid-column:1;grid-row:2;min-width:0;min-height:0;height:100%;container:map / inline-size}
+.map-content>.map-stage{top:0;height:calc(100% - var(--wave-height))}
+.whole-circuit-view .map-content>.map-stage{height:100%}
+.map-workspace>.settings-panel{position:relative;inset:auto;grid-column:2;grid-row:2;width:340px;height:100%;max-width:none;max-height:none;border-radius:0;border:0;border-left:1px solid #536961;box-shadow:none;min-height:0}
+.map-workspace.settings-open{grid-template-columns:minmax(0,1fr) 340px}
+.settings-panel>header{position:sticky;top:-16px;z-index:2;padding:8px 0;background:#213036}
+.map-workspace.settings-open.settings-stacked{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(560px,1fr);overflow-y:auto;overscroll-behavior:contain}
+.settings-stacked>.settings-panel{grid-column:1;grid-row:2;width:100%;height:auto;max-height:240px;border-left:0;border-bottom:1px solid #536961}
+.settings-stacked.settings-open>.map-content{grid-row:3}
+.parameter-value{display:flex;gap:6px;align-items:center}
+.parameter-value input{width:108px;min-width:0;font:inherit;font-size:15px;padding:5px 7px;color:#e0e8e3;background:#18282e;border:1px solid #526760;border-radius:4px}
+.parameters .parameter-value-label{display:flex;align-items:center;gap:6px;font-size:14px}
+.parameters>label{min-width:0}
+.parameters .parameter-apply{min-height:32px;padding:3px 8px;font-size:13px}
+.experiment-instructions{margin:14px 0;padding-block:8px;border-top:1px solid #526760}
+.experiment-instructions h3{font-size:16px;margin:6px 0;color:inherit}
+.experiment-instructions ol{font-size:15px;line-height:1.85;margin:8px 0;padding-left:24px}
+.experiment-instructions li+li{margin-top:6px}
+.guided-content .experiment-instructions{margin:16px 24px;color:#3b5f44;border-color:#cad7c3}
+.active-experiment{font-size:15px;line-height:1.8}
+.active-experiment h3{font-size:16px;margin:6px 0}
+.experiment-actions{display:flex;flex-wrap:wrap;gap:8px;margin-block:10px}
+.experiment-actions button{min-height:34px;font-size:13px;padding:4px 8px;background:#304c40;color:#e0eee3;border:1px solid #607e70;border-radius:4px}
+.axis-options{display:flex;align-items:end;flex-wrap:wrap;gap:8px 12px;margin-block:8px}
+.axis-options label{display:flex;align-items:center;gap:6px;font-size:13px}
+.axis-options input{width:80px;font-size:14px;padding:5px;background:#18282e;color:#e0e8e3;border:1px solid #526760;border-radius:4px}
+.axis-options button{font-size:13px;min-height:32px;background:#283e35;color:#dce8dd;border:1px solid #57705f;border-radius:4px;padding:4px 8px}
+.waveform-legend>.comparison-caption{white-space:normal;overflow-wrap:anywhere;min-width:0;flex-basis:100%}
+@container map (max-width:620px){.lesson-values{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.lesson-values>div{min-width:0}.lesson-values b{white-space:normal;overflow-wrap:anywhere}.waveform-legend>span{white-space:normal;overflow-wrap:anywhere}.wave-channels{grid-template-columns:repeat(2,minmax(0,1fr))}.map-content .measurements{padding-inline:12px}}
+@media(max-width:600px){.core-toolbar .view-switch{margin-left:0}.map-workspace>.core-toolbar{gap:6px;justify-content:flex-start}.core-toolbar .map-view-actions{gap:4px}.map-view-actions button{font-size:12px;padding-inline:7px}.whole-circuit-view .core-toolbar>span{flex-basis:100%}.map-hint{white-space:normal;max-width:220px;text-align:right}}
+.parameter-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 10px;margin-block:12px}
+.parameter-row>label:first-child,.parameter-row>input[type=range]{grid-column:1/-1}
+.parameter-row>label:first-child{display:block;font-size:15px}
+.parameter-row .parameter-value-label{display:flex;flex-direction:row;align-items:center;gap:6px}
+.parameter-row input[type=number]{width:112px;min-height:36px;font:inherit;font-size:15px;padding:4px 7px;background:#18282e;color:#e0e8e3;border:1px solid #526760;border-radius:4px}
+.parameter-row [aria-invalid=true]{border-color:#eb9f90}
+.axis-options select{max-width:130px;font-size:14px}
+.comparison-tools{display:flex;align-items:center;flex-wrap:wrap;gap:6px 8px;margin:7px 0;flex-shrink:0}
+.comparison-tools button{font-size:13px;min-height:32px;padding:4px 8px;background:#283e35;color:#dce8dd;border:1px solid #57705f;border-radius:4px}
+.comparison-tools>p{flex-basis:100%;margin:3px 0}
+.active-experiment .experiment-instructions{padding-top:0;margin-top:4px}
+.active-experiment .experiment-instructions p{font-size:15px;line-height:1.7;margin-block:8px}
+.active-experiment .experiment-instructions summary{font-size:14px;color:#c6d7ca}
+.active-experiment .experiment-actions button{font-size:12px;padding-inline:6px}
+.settings-panel>header{top:0}
+.measurements>div.waveform{min-height:166px;flex:1 0 166px}
+.measurements>div.waveform>svg.waveform{height:auto;min-height:128px;flex:1 0 128px}
+.map-workspace.stacked-explanation{overflow-y:auto;overscroll-behavior:contain}
+.map-workspace>.settings-panel{padding-top:0}
+.settings-stacked>.settings-panel{height:220px;min-height:220px}
+.settings-panel>header{padding-block:12px;margin-bottom:6px}
+.parameter-applied{grid-column:1/-1;color:#bfd0c3;font-size:13px;line-height:1.6}
+.selected-readings[data-count="1"]{grid-template-columns:minmax(0,1fr)}
+.selected-readings[data-count="2"]{grid-template-columns:repeat(2,minmax(0,1fr))}
+.selected-readings>div{min-width:0}
+.selected-readings .reading-direction{display:block;margin-top:3px;color:#b4c6bc;font-size:12px;line-height:1.5;overflow-wrap:anywhere}
+.measurements>.comparison-note{margin:2px 0 6px}
+.observation-error{flex-basis:100%;color:#ffc5b8;font-size:13px;line-height:1.6;margin:0}
+.observation-controls [aria-invalid=true]{border-color:#eb9f90}
+
+/* Reading and observation share a clear hierarchy across every circuit. */
+.map-popup{border-color:#bdcdbd;background:#f8faf5;box-shadow:0 10px 32px #07120f40;color-scheme:light}
+.popup-close{margin-left:0;flex-shrink:0}
+.reading-heading{flex-shrink:0;padding:18px 56px 12px 22px;border-bottom:1px solid #e1e8da;background:#f0f5ec}
+.reading-heading h2{margin:0;font-size:21px;line-height:1.6;letter-spacing:.01em;text-wrap:pretty;color:#2c4c39}
+.reading-focus{display:inline-flex;align-items:center;gap:7px;min-height:30px;margin-top:8px;padding:2px 0;border:0;border-bottom:1px solid #aabda6;border-radius:0;background:transparent;color:#486d51;font-size:13px;line-height:1.6}
+.reading-focus::before{content:'↗';font-size:16px}
+.reading-focus:hover{color:#1c5636;border-color:#3d7951;background:transparent}
+.popup-body{overflow-anchor:none;scrollbar-gutter:stable;padding-top:16px}
+.popup-text{margin-inline:22px;margin-bottom:20px;font-size:17px;line-height:1.85}
+.lesson-detail{margin-inline:22px}
+.lesson-detail summary{font-size:15px;line-height:1.8}
+.lesson-detail .popup-text{font-size:16px}
+.popup-navigation{gap:8px;padding:12px 16px;background:#f0f5ec}
+.popup-next{background:#dcebd7;border-color:#a9c5a1;min-height:40px}
+.popup-previous{min-height:40px}
+.popup-previous:disabled{visibility:hidden}
+.comment-tabs{gap:6px}
+.comment-tabs button{width:40px;height:40px;min-height:40px;font-size:16px}
+.map-workspace:has(.map-popup:not([hidden]) .guided-content:not([hidden])) .map-view-actions button:first-child{display:none}
+.wave-open .sim-controls{display:none}
+.wave-open .map-key>span{display:none}
+.wave-open[data-mode=free] .map-hint{top:12px}
+.wave-sheet-header{height:42px;background:#1e3036}
+.wave-handle{height:42px;padding-top:5px;font-size:13px}
+.wave-toggle{min-height:30px;font-size:13px;padding:2px 10px}
+.wave-grip{top:5px;width:34px;height:3px;opacity:.8}
+.measurements{padding-top:9px;gap:5px;scrollbar-gutter:stable}
+.selected-readings{flex-shrink:0;margin-block:0 5px;gap:8px 18px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.selected-readings>div{border-left:2px solid #536c63;padding-left:9px}
+.selected-readings>div>span{font-size:12px;color:#aebfb6;line-height:1.55}
+.selected-readings b{display:block;margin-top:2px;font-size:16px;line-height:1.5;font-weight:550}
+.selected-readings .reading-direction{font-size:12px}
+.measurements>div.waveform{min-height:150px;flex:1 0 150px}
+.measurements>div.waveform>svg.waveform{min-height:110px}
+.observation-legend{gap:3px 12px;margin:0 0 2px}
+.waveform-legend>.comparison-caption{font-size:12px;line-height:1.6;color:#c6d5ca}
+.observation-controls{padding-top:7px;border-top:1px solid #3c514b;gap:6px 8px;flex-shrink:0}
+.observation-controls label{font-size:12px;gap:5px}
+.observation-controls input{width:84px}
+.observation-controls button{font-size:12px;min-height:32px}
+.observation-controls .primary-button{background:#3b684e;border-color:#80a98d;color:#eff8ed}
+.comparison-tools{margin:1px 0 0;gap:5px 8px}
+.comparison-tools button{background:transparent;font-size:12px;min-height:30px;border-color:#516b5e}
+.comparison-tools button:first-child{border-color:#8baf95;color:#dbecd9}
+.observation-options{margin:2px 0 3px}
+.observation-options>summary{font-size:12px;color:#a6bdb0}
+.signal-settings{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.signal-settings label{display:flex;align-items:center;gap:8px;font-size:13px}
+.signal-settings select{min-height:32px;max-width:220px;padding:3px 7px;border:1px solid #57705f;border-radius:4px;background:#1b2b30;color:#dce8dd;font-size:13px}
+.observation-options .capacitor-values{margin-block:10px}
+.core-toolbar{font-size:13px}
+.core-toolbar .view-switch{padding:2px;gap:2px;background:#14232780}
+.core-toolbar .view-switch button{min-height:32px;font-size:13px;padding-inline:13px}
+.map-viewport{background-image:radial-gradient(#71918c21 .75px,transparent .75px)}
+.map-workspace[data-mode=guided] .part:not(.voltage-annotation):not(.lesson-focus):not(.selected){opacity:.73}
+.map-hint{font-size:12px;color:#a8beb4}
+.settings-panel{overflow-anchor:none;scrollbar-gutter:stable}
+.map-popup .popup-resize:focus-visible{outline:2px solid #4d8b64;outline-offset:-2px}
+@container map (max-width:620px){.selected-readings{grid-template-columns:repeat(2,minmax(0,1fr))}.reading-heading{padding:12px 52px 9px 17px}.reading-heading h2{font-size:18px}.popup-text{margin-inline:17px;font-size:16px;line-height:1.8}.reading-focus{font-size:12px}.popup-navigation{padding:9px 12px}.comment-tabs{gap:5px}.comment-tabs button{width:40px;height:40px;min-height:40px}}
+@media(prefers-reduced-motion:reduce){.part{transition:none}}
+.skip-link{position:fixed;z-index:100;top:8px;left:12px;transform:translateY(-160%);padding:8px 14px;background:#edf5e8;color:#294a35;border:1px solid #85ac8d;border-radius:4px;font-size:14px}
+.skip-link:focus{transform:translateY(0)}
+
+.lesson-menu{overflow-anchor:none}
+
+.map-popup{container:explanation / inline-size}
+.section-outline{margin:0 20px 14px;border-bottom:1px solid #d5dfd3;color:#405d49}
+.section-outline summary{padding:0 0 10px;cursor:pointer;font-size:14px;line-height:1.55}
+.section-outline summary span:first-child{font-weight:600}
+.section-outline summary span+span{margin-inline-start:.7em;white-space:nowrap;font-variant-numeric:tabular-nums}
+.section-outline .comment-tabs{display:grid;gap:2px;margin-bottom:10px}
+.section-outline .comment-tabs button{display:flex;align-items:center;gap:9px;width:100%;height:auto;min-height:40px;padding:0 8px 0 0;border:0;border-radius:4px;text-align:start;font-size:14px;line-height:1.45;color:#365140}
+.section-outline .step-number{display:grid;place-items:center;width:40px;height:40px;flex:none;font-variant-numeric:tabular-nums}
+.section-outline .comment-tabs button[aria-pressed=true]{background:#4c7455;color:white}
+.popup-navigation{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px;padding:10px 14px;align-items:center}
+.popup-previous,.popup-next{display:inline-flex;align-items:center;justify-content:center;align-self:stretch;min-width:0;min-height:40px;padding:8px 10px;font-size:13px;line-height:20px}
+.popup-previous{justify-self:start;border-color:#c5d3bb;background:#f9faf5}
+.popup-next{justify-self:end;max-width:100%;margin-left:0}
+.popup-next>span:first-child{min-width:0;overflow-wrap:anywhere}
+.popup-next>span:last-child{flex-shrink:0}
+@container explanation (max-width:360px){
+ .popup-navigation{gap:6px;padding:8px}
+ .popup-previous,.popup-next{padding-inline:7px}
+ .section-outline{margin-inline:14px}
+}
+
+.whole-circuit-view.map-workspace{grid-template-rows:auto minmax(0,1fr)}
+.whole-circuit-view>.overview-scopebar{grid-row:1}
+.whole-circuit-view>.map-content{grid-row:2}
+.whole-circuit-view .map-content>.map-stage{top:0;height:100%}
+.overview-reading-map.map-workspace{grid-template-rows:minmax(0,1fr)}
+.overview-reading-map>.map-content{grid-row:1}
+.overview-map-actions{position:absolute;inset:0 0 auto auto;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px;max-width:100%}
+.overview-map-actions button{min-height:32px;padding:3px 10px;border:1px solid #506856;border-radius:4px;background:#19292e;color:#dae5de;font-size:13px}

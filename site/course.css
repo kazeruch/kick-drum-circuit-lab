@@ -1,0 +1,137 @@
+.brand{min-width:0;overflow:hidden;text-overflow:ellipsis;font-size:15px}
+.app-header{gap:16px}
+.app-header .view-switch{flex-shrink:0}
+.course-workspace{grid-column:2;display:grid;grid-template-columns:minmax(300px,390px) minmax(0,1fr);height:100%;min-width:0;min-height:0;overflow:hidden;background:#142126}
+.course-reader{display:flex;flex-direction:column;min-width:0;min-height:0;border-right:1px solid #3c514b;background:#f5f6ef;color:#2c4037}
+.course-reader-heading{padding:20px 24px 16px;border-bottom:1px solid #d8e0d0;background:#ebefe3;flex-shrink:0}
+.course-eyebrow{margin:0 0 6px;font-size:12px;color:#58715f}
+.course-reader-heading h2{margin:0;font-size:20px;line-height:1.55;font-weight:650}
+.course-reader-heading>p:last-child{font-size:13px;line-height:1.8;margin:9px 0 0;color:#5c7061}
+.course-reader-body{min-height:0;overflow:auto;overscroll-behavior:contain;padding:20px 24px 26px;flex:1}
+.course-step-counter{font-size:12px;color:#748472;margin:0 0 8px}
+.course-reader h3{font-size:19px;line-height:1.65;margin:0 0 14px;color:#34583f}
+.course-prose{white-space:pre-line;font-size:16px;line-height:1.95;margin:0;overflow-wrap:anywhere;line-break:strict}
+.course-detail{margin-top:22px;padding-top:14px;border-top:1px solid #ccd8c6}
+.course-detail summary{font-size:14px;color:#4b6b50;font-weight:600}
+.course-detail .course-prose{font-size:14px;margin-top:14px}
+.course-experiment{margin-top:22px;padding:16px 17px;border:1px solid #ccd8be;border-radius:7px;background:#eaf0df}
+.course-experiment h4{margin:0;font-size:14px;color:#46623d}
+.course-experiment ol{font-size:14px;line-height:1.85;margin:9px 0 0;padding-left:20px}
+.course-experiment li+li{margin-top:8px}
+.course-reader-navigation{display:flex;justify-content:space-between;gap:12px;padding:14px 22px;border-top:1px solid #d5dfcc;background:#edf1e5;flex-shrink:0}
+.course-reader-navigation button{padding:6px 14px;min-height:38px;background:#f8faf1;color:#3a5f42;border:1px solid #bccdb3;border-radius:5px;font-size:14px}
+.course-reader-navigation button:last-child{background:#dce8d0;font-weight:600}
+.course-lab-panel{display:flex;flex-direction:column;min-height:0;min-width:0;overflow:auto;overscroll-behavior:contain}
+.course-lab-context{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 20px;border-bottom:1px solid #344d45;background:#1a2b2e;font-size:12px;color:#9bb3a6;flex-shrink:0}
+.course-lab-context button{font-size:12px;line-height:1.5;padding:4px 9px;border-radius:5px;border:1px solid #4b6956;color:#c9ddcb;background:transparent;text-align:left}
+#drum-lab{min-width:0}
+.part-panel{grid-column:2;height:100%;min-width:0;min-height:0;overflow:hidden}
+#part-lab{width:100%;height:100%;min-width:0;min-height:0}
+.course-overview-panel{padding:26px 28px;color:#d7e4d8;gap:20px}
+.course-workspace.overview-mode{grid-template-columns:minmax(0,1fr)}
+.overview-mode .course-overview-panel{padding:0;gap:0;overflow:hidden;height:100%;max-width:none}
+#full-circuit-map{width:100%;height:100%;min-height:0}
+.whole-circuit-view .map-stage{height:calc(100% - 46px)}
+.whole-circuit-view .core-toolbar>span{display:block}
+.whole-circuit-view .core-toolbar a{color:#b6cbbd;font-size:12px}
+.whole-schematic{overflow:visible}
+.overview-region polygon{fill:transparent;stroke:transparent;stroke-width:2.5;pointer-events:all;stroke-linejoin:round}
+.overview-wire-routes path{fill:none;stroke-width:5.5;stroke-linecap:round;stroke-linejoin:round;opacity:.52}
+.overview-node-markers circle{fill:none;stroke:#167d92;stroke-width:2;stroke-dasharray:3 2}
+.whole-circuit-view .map-hint{white-space:normal;text-align:right;max-width:380px;background:#142126df;padding:4px 8px;border-radius:4px;font-size:12px}
+.overview-region:hover polygon,.overview-region:focus-visible polygon,.overview-region.lesson-focus polygon{stroke:var(--part-color,#417c68);fill:#90bba30d}
+.whole-circuit-view .part:focus-visible .hit-box{fill:transparent;stroke:none}
+@media(max-width:760px){.whole-circuit-view .map-stage{height:calc(100% - 44px)}.whole-circuit-view .core-toolbar a{font-size:11px}}
+.course-overview-panel>header h2{font-size:22px;margin:0 0 10px;line-height:1.65}
+.course-overview-panel header>p:last-child,.course-merge-note{font-size:14px;line-height:1.9;color:#a9beb0;margin:0}
+.course-parts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px;list-style:none;margin:0;padding:0}
+.course-parts button{width:100%;height:100%;padding:16px;text-align:left;border:1px solid #4b6559;border-left:3px solid var(--part-color,#4b6559);border-radius:8px;background:#22372f;color:#dbe9d7}
+.course-parts strong{display:block;font-size:15px;font-weight:600;line-height:1.6}
+.course-parts span{display:block;font-size:12px;color:#a8c0ad;line-height:1.8;margin-top:8px}
+@media(max-width:1350px){.course-parts{grid-template-columns:minmax(0,1fr)}.course-overview-panel{padding:20px}}
+.course-workspace.lab-only{grid-template-columns:minmax(0,1fr)}
+.lab-only .course-lab-panel{max-width:1500px;width:100%;margin:0 auto}
+.course-sections{list-style:none;margin:0 0 14px;padding:0 0 0 16px}
+.lesson-menu .course-sections button{min-height:48px;padding:10px 10px;margin:5px 0;font-size:14px;line-height:1.6;border-left:3px solid #40584c;border-radius:0 5px 5px 0;display:grid;grid-template-columns:3ch minmax(0,1fr);gap:8px;align-items:baseline}
+.lesson-menu .course-sections .course-section-number{width:auto;font-size:inherit;white-space:nowrap}
+.lesson-menu .course-sections button[aria-current=step]{border-left-color:#a8c399;background:#293f35;color:#e0eddb}
+.core-toolbar{position:absolute;inset:0 0 auto;height:46px;display:flex;align-items:center;gap:12px;padding:0 16px;z-index:24;background:#1a2b2e;border-bottom:1px solid #40534a}
+.core-toolbar>button{font-size:12px;padding:3px 9px;min-height:32px;border-radius:4px;border:1px solid #506856;background:transparent;color:#c6d8c6;flex-shrink:0}
+.core-toolbar>span{font-size:12px;color:#95ad9e}
+.core-toolbar .view-switch{flex-shrink:0}
+.map-workspace>.map-stage{top:46px;height:calc(100% - var(--wave-height) - 46px)}
+@media(min-width:1800px){.course-workspace{grid-template-columns:minmax(340px,450px) minmax(0,1fr)}.course-prose{font-size:17px}}
+@media(max-width:1350px){.course-workspace{grid-template-columns:minmax(270px,340px) minmax(0,1fr)}.course-reader-heading{padding:16px 18px 12px}.course-reader-body{padding:16px 18px 22px}.course-lab-context{padding:9px 14px}.course-lab-context>span{display:none}.core-toolbar>span{display:none}}
+@media(max-width:1000px){.course-workspace{display:flex;flex-direction:column;overflow:auto}.course-reader{min-height:380px;max-height:62vh;flex-shrink:0;border-right:0;border-bottom:1px solid #52664e}.course-reader-heading>p:last-child{display:none}.course-lab-panel{overflow:visible;flex-shrink:0}.course-workspace.lab-only .course-lab-panel{height:100%;overflow:auto}.course-workspace.lab-only{overflow:hidden}.course-reader-heading h2{font-size:18px}.course-prose{font-size:16px}.course-reader-heading{padding-block:12px}.course-reader-navigation{padding:10px 18px}}
+@media(max-width:760px){.app-header{gap:8px}.brand{font-size:13px}.app-header .view-switch button{font-size:11px;padding:2px 6px}.app-header .header-button{font-size:11px;max-width:48px;line-height:1.25}.course-reader{min-height:370px;max-height:65vh}.course-reader-body{padding:14px 18px 20px}.course-lab-context{padding:8px 12px}.core-toolbar{height:44px;padding:0 9px;gap:6px}.core-toolbar .view-switch button{font-size:11px;padding:2px 7px}.core-toolbar>button{font-size:11px;padding-inline:6px}.map-workspace>.map-stage{top:44px;height:calc(100% - var(--wave-height) - 44px)}}
+
+/* Keep the article's functional numbers and colours across the overview. */
+[data-part=resonator]{--part-color:#e0a36a}
+[data-part=trigger]{--part-color:#80b7df}
+[data-part=pitch-decay]{--part-color:#b69bd8}
+[data-part=pitch-envelope]{--part-color:#9bc68c}
+[data-part=tone]{--part-color:#dec66f}
+[data-part=distortion-output]{--part-color:#d998b2}
+.overview-map{display:block;width:100%;height:auto;flex-shrink:0;margin:0}
+.overview-block rect{fill:#1d3031;stroke:var(--part-color);stroke-width:1.8}
+.overview-block text{fill:var(--part-color);font:600 18px sans-serif;text-anchor:middle}
+.overview-block .overview-small{fill:#c1cec9;font:14px sans-serif}
+.overview-connections{fill:none;stroke:#a8c5b3;stroke-width:2}
+.overview-connections .overview-control{stroke:#9bc68c;stroke-dasharray:6 4}
+.overview-connections .overview-feedback{stroke:#b69bd8;stroke-dasharray:6 4}
+.overview-map-label{fill:#b7c8be;font:13px sans-serif}
+.course-merge-note a{color:#bdd7b5;text-underline-offset:3px}
+.sound-prototype-note{margin:0;padding:12px 20px;background:#233336;color:#c9d4cc;font-size:14px;line-height:1.8}
+.course-workspace .course-parts{grid-template-columns:repeat(2,minmax(0,1fr))}
+.course-workspace .course-parts span{font-size:14px}
+.part-draft-note{font-size:14px;line-height:1.75;margin:0 0 18px;padding-bottom:12px;color:#5b6e5e;border-bottom:1px solid #d5dfcc}
+@media(max-width:760px){.course-workspace .course-parts{grid-template-columns:minmax(0,1fr)}}
+
+/* The whole schematic uses the same actual symbols as the partial circuits. */
+.overview-scopebar{position:relative;inset:auto;grid-column:1;grid-row:2;min-height:46px;z-index:24;display:flex;align-items:center;padding:0 16px;border-bottom:1px solid #34494b;background:#19292e}
+.overview-scopebar label{white-space:nowrap;display:flex;align-items:center;gap:12px;font-size:12px;color:#a6bcb2}
+.overview-scopebar select{min-width:220px;max-width:calc(100vw - 110px);min-height:32px;padding:3px 9px;background:#23363a;border:1px solid #4d6761;border-radius:4px;color:#dae5de;font-size:13px}
+.whole-circuit-view .core-toolbar>span{min-width:70px;flex:1}
+.whole-circuit-view .core-toolbar a{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.overview-circuit .component{stroke:#b4c7bf;stroke-width:1.6;vector-effect:non-scaling-stroke}
+.overview-circuit .overview-boundary{fill:var(--part-color);fill-opacity:.045;stroke:var(--part-color);stroke-opacity:.36;stroke-width:1;stroke-dasharray:5 5;vector-effect:non-scaling-stroke;pointer-events:all}
+.overview-circuit .overview-region:not([role]) .overview-boundary{pointer-events:none}
+.overview-circuit .overview-region:hover .overview-boundary,.overview-circuit .overview-region:focus-visible .overview-boundary{fill-opacity:.11;stroke-opacity:1;stroke-dasharray:none}
+.overview-circuit .overview-boundary[data-area="envelope"],.overview-circuit .overview-boundary[data-area="pitch-control"]{stroke-opacity:.86;stroke-width:1.7;fill-opacity:.08}
+.overview-circuit .overview-boundary[data-area="envelope"]{stroke-dasharray:none}
+.overview-circuit .overview-boundary[data-area="pitch-control"]{stroke-dasharray:8 4}
+.whole-circuit-view .overview-component,.whole-circuit-view .overview-region{opacity:1}
+.overview-circuit .overview-muted{opacity:.34}
+.whole-circuit-view .overview-component.overview-muted,.whole-circuit-view .overview-region.overview-muted{opacity:.34}
+.overview-circuit .overview-value{font-size:20px;fill:#cbd8d1;font-weight:450}
+.overview-circuit .overview-terminal-sign{font-size:20px;fill:#d5e2db}
+.overview-circuit.overview-distant .overview-value{visibility:hidden}
+.overview-circuit .overview-range-tag{cursor:pointer}
+.overview-circuit .overview-range-tag rect{fill:#1b2c31;stroke:var(--part-color);stroke-width:1}
+.overview-circuit .overview-range-title{font-size:28px;font-weight:600;fill:var(--part-color)}
+.overview-circuit .overview-range-tag:hover rect,.overview-circuit .overview-range-tag:focus-visible rect{fill:#2b4243;stroke-width:2}
+.overview-circuit .overview-wire-routes path{stroke-width:3.5;vector-effect:non-scaling-stroke;opacity:.8}
+.overview-circuit .overview-junctions circle{fill:#e0e9e3}
+.overview-circuit .overview-node-markers circle{stroke:#b9e5dc;stroke-width:2;stroke-dasharray:none;vector-effect:non-scaling-stroke;fill:none}
+.overview-circuit .overview-port-label{fill:#192c32;stroke:var(--part-color);stroke-width:1}
+.overview-circuit .overview-port-title{font-size:23px;font-weight:650;fill:var(--part-color)}
+.overview-circuit .overview-port-point{fill:#18292f;stroke:var(--part-color);stroke-width:2}
+@media(max-width:760px){.overview-scopebar{min-height:44px;padding-inline:9px}.whole-circuit-view .core-toolbar{overflow-x:auto}.overview-scopebar select{min-width:190px}}
+
+.overview-circuit .overview-control-name{font-size:20px;font-weight:600;fill:#dce9df}
+.overview-circuit .overview-control-value{font-size:18px;fill:#b0c9ba}
+.overview-circuit .overview-control-label .component-label-leader{stroke-width:1;vector-effect:non-scaling-stroke}
+.overview-circuit.overview-distant .overview-control-label{visibility:hidden}
+
+.whole-circuit-view .overview-component:focus-visible .hit-box{fill:#c1dbc61a;stroke:#e4c276;stroke-width:1;stroke-dasharray:4 3;vector-effect:non-scaling-stroke}
+
+.overview-circuit .overview-range-leader{fill:none;stroke:var(--part-color);stroke-width:1;stroke-dasharray:3 3;vector-effect:non-scaling-stroke;pointer-events:none;opacity:.65}
+
+.overview-scopebar{flex-wrap:wrap;gap:6px;padding-block:6px}
+.overview-text-focus{display:inline;padding:0;border:0;background:transparent;color:#315e49;font:inherit;text-decoration:underline;text-underline-offset:.16em;cursor:pointer}
+.overview-text-focus:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+
+.overview-circuit.overview-tiny .overview-range-tag,.overview-circuit.overview-tiny .overview-range-leader{display:none}
+
+.lesson-menu .planned-chapter {margin:10px 12px 10px 16px; color:#afc1b7; font-size:14px; line-height:1.6}
+.planned-chapter small {display:block; margin-left:1.4em; font-size:12px}

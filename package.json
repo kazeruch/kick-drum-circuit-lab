@@ -1,0 +1,9 @@
+{
+  "name": "kick-drum-circuit-lab",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node docs/build-kick-site.mjs",
+    "test": "node docs/build-kick-site.mjs --check"
+  }
+}

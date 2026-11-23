@@ -1,0 +1,92 @@
+<!doctype html>
+<!-- Generated from site/index.html by npm run build. -->
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="GATE INからOUTPUTまで、配線をたどってキックドラムのアナログ回路を読む補助教材。">
+  <title>キックドラムのアナログ回路を読む</title>
+  <link rel="stylesheet" href="./site/style.css">
+  <link rel="stylesheet" href="./site/course.css">
+  <link rel="stylesheet" href="./site/part-lab.css">
+  <script defer src="./site/app.bundle.js"></script>
+</head>
+<body class="lesson-mode">
+  <a class="skip-link" href="#simulator-panel">回路と説明へ移動</a>
+  <header class="app-header">
+    <button id="chapter-toggle" class="chapter-toggle" type="button" aria-expanded="false" aria-controls="chapter-sidebar"><svg viewBox="0 0 20 20" width="20" height="20" aria-hidden="true"><path d="M3 4h14v12H3Z M8 4v12"/></svg><span>目次</span></button>
+    <h1 class="brand">キックドラムのアナログ回路を読む</h1>
+  </header>
+  <main class="circuit-map" id="simulator-panel" aria-label="キックドラムの回路教材" tabindex="-1">
+    <nav class="chapter-sidebar" id="chapter-sidebar" aria-label="目次" hidden>
+      <ol id="lesson-menu" class="lesson-menu" aria-label="目次"></ol>
+      <div id="chapter-resize" class="chapter-resize" role="separator" tabindex="0" aria-label="目次の幅を調整" aria-orientation="vertical" aria-controls="chapter-sidebar" aria-valuemin="200" aria-valuemax="480" aria-valuenow="248"></div>
+    </nav>
+    <button id="chapter-backdrop" class="chapter-backdrop" type="button" tabindex="-1" aria-label="目次を閉じる" hidden></button>
+    <div class="course-workspace overview-mode" id="course-workspace">
+      <section id="course-overview" class="course-lab-panel course-overview-panel" aria-label="元マニュアルの全体回路図">
+        <div id="full-circuit-map"></div>
+      </section>
+    </div>
+    <div class="map-workspace" id="map-workspace" data-mode="guided" hidden>
+    <div class="core-toolbar">
+      <button id="show-explanation" class="text-button" type="button" hidden>説明を表示</button>
+      <button id="core-overview" type="button">全体回路図へ</button>
+      <span class="view-switch" hidden></span>
+      <div class="map-view-actions"><button id="focus-target" type="button">対象を拡大</button><button id="fit-circuit" type="button">図を画面に収める</button></div>
+    </div>
+    <div class="map-content" id="map-content">
+    <div class="map-stage" id="map-stage">
+    <div class="map-viewport" id="map-viewport" tabindex="0" aria-label="回路マップ。部品をクリックすると説明が開きます。背景をドラッグすると図全体の表示位置が動きます。ホイールまたは＋／－キーで拡大縮小できます。0キーで図を画面に収めます">
+      <svg id="circuit-diagram" role="group" aria-labelledby="circuit-title circuit-desc" class="circuit-diagram">
+      <title id="circuit-title">キックドラムの全体回路図</title>
+      <desc id="circuit-desc"></desc>
+      <g id="circuit-world">
+          <circle id="comment-anchor" class="comment-anchor" r="8" aria-hidden="true"/>
+        </g>
+      </svg>
+    </div>
+    <div class="circuit-area" id="circuit-area">
+    <div id="map-key" hidden></div>
+    <p class="map-hint" hidden></p>
+    </div>
+    <svg class="popup-connector" id="popup-connector" aria-hidden="true"><path id="popup-line" class="popup-line"/></svg>
+    <article class="map-popup" id="map-popup" aria-label="回路の説明">
+      <div id="popup-resize-width" class="popup-resize popup-resize-width" role="separator" tabindex="0" aria-label="説明欄の幅を調整" aria-orientation="vertical" aria-controls="map-popup" aria-valuemin="320" aria-valuemax="640" aria-valuenow="520" title="左右にドラッグして説明欄の幅を調整"></div>
+      <div id="popup-resize-height" class="popup-resize popup-resize-height" role="separator" tabindex="0" aria-label="説明欄の高さを調整" aria-orientation="horizontal" aria-controls="map-popup" aria-valuemin="180" aria-valuemax="440" aria-valuenow="440" title="上下にドラッグして説明欄の高さを調整"></div>
+      <div id="popup-resize-corner" class="popup-resize popup-resize-corner" aria-hidden="true" title="角をドラッグして説明欄の幅と高さを調整"></div>
+      <div class="visually-hidden"><span id="popup-label">回路の全体像</span></div>
+      <button id="popup-close" type="button" class="popup-close" aria-label="説明を閉じる">×</button>
+      <div id="guided-content" class="guided-content">
+        <div class="reading-heading">
+          <h2 id="lesson-title">回路の全体像</h2>
+          <button id="reading-focus" class="reading-focus" type="button">図の注目箇所を拡大</button>
+        </div>
+        <div class="popup-body">
+          <details id="section-outline" class="section-outline" hidden>
+            <summary><span id="section-name"></span> <span id="reading-progress"></span></summary>
+            <div id="comment-tabs" aria-label="節内の説明を選ぶ" class="comment-tabs"></div>
+          </details>
+        <figure id="lesson-preview" hidden></figure>
+        <p id="lesson-comment-text" class="popup-text" aria-live="polite" aria-atomic="true"></p>
+        <details id="lesson-detail" class="lesson-detail" hidden>
+          <summary id="lesson-detail-summary">補足</summary>
+          <p id="lesson-detail-text" class="popup-text"></p>
+        </details>
+        </div>
+        <div class="popup-navigation">
+          <button id="lesson-previous-bottom" class="popup-previous" type="button">前の説明</button>
+          <button id="lesson-next-bottom" class="popup-next" type="button"><span id="comment-next-caption">次へ</span><span aria-hidden="true">→</span></button>
+        </div>
+      </div>
+      <div id="inspect-content" hidden></div>
+    </article>
+    </div>
+      <div id="wave-sheet" hidden><span id="wave-handle"></span><span id="measurements" hidden></span><span id="wave-caption"></span><span id="wave-toggle"></span></div>
+      <div id="settings-panel" hidden></div>
+    </div>
+    </div>
+  </main>
+  <noscript>回路図を表示するには、ブラウザーのJavaScriptを有効にしてください。</noscript>
+</body>
+</html>
